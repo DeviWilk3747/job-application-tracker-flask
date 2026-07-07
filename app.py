@@ -78,6 +78,19 @@ def view_applications():
 
     return render_template("view_applications.html", applications=applications)
 
+@app.route("/delete-application/<int:application_id>", methods=["POST"])
+def delete_application(application_id):
+    cursor.execute(
+        """
+        DELETE FROM applications
+        WHERE id = ?
+        """,
+        (application_id,)
+    )
+    connection.commit()
+
+    flash("Application deleted successfully.")
+    return redirect(url_for("view_applications"))
 
 # Run Flask server
 if __name__ == "__main__":

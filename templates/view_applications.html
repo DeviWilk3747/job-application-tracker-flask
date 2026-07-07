@@ -14,28 +14,43 @@
             {% endif %}
         {% endwith %}
 
-        <form action="/view-applications" method="GET">
-            {% if applications %}
-                {% for application in applications %}
-                    <p><strong>Company: </strong>{{ application[1] }}</p>
-                    <p><strong>Job Title: </strong>{{ application[2] }}</p>
-                    <p><strong>Location: </strong>{{ application[3] }}</p>
-                    <p><strong>Job Link: </strong>{{ application[4] }}</p>
-                    <p><strong>Date Applied: </strong>{{ application[5] }}</p>
-                    <p><strong>Status: </strong>{{ application[6] }}</p>
-                    <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
-                    <p><strong>Notes: </strong>{{ application[8] }}</p>
-                    <br>
-                {% endfor %}
+        {% if applications %}
+            {% for application in applications %}
+                <p><strong>Company: </strong>{{ application[1] }}</p>
+                <p><strong>Job Title: </strong>{{ application[2] }}</p>
+                <p><strong>Location: </strong>{{ application[3] }}</p>
+
+                <p>
+                    <strong>Job Link: </strong>
+                    <a href="{{ application[4] }}" target="_blank"></a>
+                </p>
+
+                <p><strong>Date Applied: </strong>{{ application[5] }}</p>
+                <p><strong>Status: </strong>{{ application[6] }}</p>
+                <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
+                <p><strong>Notes: </strong>{{ application[8] }}</p>
+
+                <br>
+
+                <form 
+                    action="/delete-application/{{ application[0] }}" 
+                    method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this application?');"
+                >
+                    <button type="submit">Delete</button>
+                </form>
+
+                <br>
+
+            {% endfor %}
 
 
-            {% else %}
-                <p>No applications found</p>
-            {% endif %}
+        {% else %}
+            <p>No applications found</p>
+        {% endif %}
 
-            <br>
+        <br>
 
-            <a href="/">Home</a>
-        </form>
+        <a href="/">Home</a>
     </body>
 </html>
