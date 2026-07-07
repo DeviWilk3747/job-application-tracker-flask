@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>View Applications</title>
+    </head>
+
+    <body>
+        <h1>Applications</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/view-applications" method="GET">
+            {% if applications %}
+                {% for application in applications %}
+                    <p><strong>Company: </strong>{{ application[1] }}</p>
+                    <p><strong>Job Title: </strong>{{ application[2] }}</p>
+                    <p><strong>Location: </strong>{{ application[3] }}</p>
+                    <p><strong>Job Link: </strong>{{ application[4] }}</p>
+                    <p><strong>Date Applied: </strong>{{ application[5] }}</p>
+                    <p><strong>Status: </strong>{{ application[6] }}</p>
+                    <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
+                    <p><strong>Notes: </strong>{{ application[8] }}</p>
+                    <br>
+                {% endfor %}
+
+
+            {% else %}
+                <p>No applications found</p>
+            {% endif %}
+
+            <br>
+
+            <a href="/">Home</a>
+        </form>
+    </body>
+</html>

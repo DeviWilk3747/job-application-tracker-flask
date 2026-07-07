@@ -6,13 +6,6 @@
 
     <body>
         <h1>Job Application Tracker</h1>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
 
         <br>
 
@@ -21,5 +14,9 @@
         <br>
 
         <a href="/add-application">Add Application</a>
+
+        <br>
+
+        <a href="/view-applications">View Applications</a>
     </body>
 </html>

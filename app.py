@@ -66,11 +66,17 @@ def add_application():
         connection.commit()
 
         flash("Application added successfully!")
-        return redirect(url_for("home"))
+        return redirect(url_for("view_applications"))
 
     return render_template("add_application.html")
     
+@app.route("/view-applications")
+def view_applications():
+    cursor.execute("""SELECT * FROM applications""")
 
+    applications = cursor.fetchall()
+
+    return render_template("view_applications.html", applications=applications)
 
 
 # Run Flask server
