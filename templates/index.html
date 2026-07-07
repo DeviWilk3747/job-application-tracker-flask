@@ -6,9 +6,20 @@
 
     <body>
         <h1>Job Application Tracker</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
         <br>
 
         <p>Track job applications, statuses, follow-ups, and interview notes.</p>
+
+        <br>
+
+        <a href="/add-application">Add Application</a>
     </body>
 </html>

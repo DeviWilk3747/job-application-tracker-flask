@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Application</title>
+    </head>
+
+    <body>
+        <h1>Add Application</h1>
+
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+
+        <form action="/add-application" method="POST">
+            <label for="company">Company:</label>
+            <input
+                type="text"
+                id="company"
+                name="company"
+                required
+            >
+            
+            <br><br>
+
+            <label for="job_title">Job Title:</label>
+            <input
+                type="text"
+                id="job_title"
+                name="job_title"
+                required
+            >
+
+            <br><br>
+
+            <label for="location">Location:</label>
+            <input
+                type="text"
+                id="location"
+                name="location"
+            >
+
+            <br><br>
+            
+            <label for="job_link">Job Link:</label>
+            <input
+                type="text"
+                id="job_link"
+                name="job_link"
+            >
+
+            <br><br>
+
+            <label for="date_applied">Date Applied:</label>
+            <input
+                type="date"
+                id="date_applied"
+                name="date_applied"
+                required
+            >
+
+            <br><br>
+            
+            <label for="status">Status</label>
+            <input
+                type="text"
+                id="status"
+                name="status"
+                required
+            >
+
+            <br><br>
+
+            <label for="follow_up_date">Follow-up Date</label>
+            <input
+                type="date"
+                id="follow_up_date"
+                name="follow_up_date"
+            >
+
+            <br><br>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes"></textarea>
+
+            <br><br>
+
+            <button type="submit">Add Application</button>
+        </form>
+
+        <br><br>
+        
+        <a href="/">Back to Home</a>
+    </body>
+</html>
