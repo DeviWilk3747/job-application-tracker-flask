@@ -72,11 +72,35 @@ def add_application():
     
 @app.route("/view-applications")
 def view_applications():
-    cursor.execute("""SELECT * FROM applications""")
+
+    # URL Values
+
+    search = request.args.get("search", "").strip()
+    status = request.args.get("status", "").strip()
+
+    query = ("SELECT * FROM applications")
+    conditions = []
+    parameters = []
+
+    if search:
+        # Searches and displays applications entered
+        conditions.append("(company LIKE ? OR job_title LIKE ?)")
+        parameters.append(f"%{search}%")
+        parameters.append(f"%{search}%")
+
+    if status:
+        # Displays applications based on status selected
+        conditions.append("status = ?")
+        parameters.append(status)
+
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    cursor.execute(query, parameters)
 
     applications = cursor.fetchall()
 
-    return render_template("view_applications.html", applications=applications)
+    return render_template("view_applications.html", applications=applications, search=search, status=status)
 
 @app.route("/delete-application/<int:application_id>", methods=["POST"])
 def delete_application(application_id):
