@@ -109,8 +109,8 @@ def edit_application(application_id):
         if not company or not job_title or not date_applied or not status:
             return render_template(
                 "edit_application.html",
-                error="All fields required.",
-                application=(application_id, company, job_title, date_applied, status)
+                error="Company, job title, date applied, and status are required.",
+                application=(application_id, company, job_title, location, job_link, date_applied, status, follow_up_date, notes)
             )
         
         cursor.execute(
@@ -150,7 +150,7 @@ def edit_application(application_id):
         if application is None:
             return "Application not found", 404
 
-    # Send selected expense to edit form    
+    # Send selected application to edit form    
     return render_template("edit_application.html", application=application)
 
 
