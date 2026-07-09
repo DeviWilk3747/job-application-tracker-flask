@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+
+
+    <body>
+        <h1>Dashboard</h1>
+
+        <h2>Total Applications: {{ total_applications }} </h2>
+
+        <h2>Applications by Status:</h2>
+
+        <p>Applied - {{ applied_count }}</p>
+        <p>Interviewing - {{ interviewing_count }}</p>
+        <p>Rejected - {{ rejected_count }}</p>
+        <p>Offers - {{ offers_count }}</p>
+        <p>Saved - {{ saved_count }}</p>
+
+        <br><br>
+
+        <a href="/">Back to Home</a>
+        <a href="/view-applications">View Applications</a>
+
+    </body>
+
+</html>

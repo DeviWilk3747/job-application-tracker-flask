@@ -177,6 +177,59 @@ def edit_application(application_id):
     # Send selected application to edit form    
     return render_template("edit_application.html", application=application)
 
+@app.route("/dashboard")
+def dashboard():
+
+    # Counts how many total rows are in the application table
+    cursor.execute("SELECT COUNT(*) FROM applications")
+    result = cursor.fetchone()
+    total_applications = result[0]
+
+    # Counts applications by status
+    cursor.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = ?",
+        ("Applied",)
+    )
+    result = cursor.fetchone()
+    applied_count = result[0]
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = ?",
+        ("Interviewing",)
+    )
+    result = cursor.fetchone()
+    interviewing_count = result[0]
+    
+    cursor.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = ?",
+        ("Rejected",)
+    )
+    result = cursor.fetchone()
+    rejected_count = result[0]
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = ?",
+        ("Offers",)
+    )
+    result = cursor.fetchone()
+    offers_count = result[0]
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM applications WHERE status = ?",
+        ("Saved",)
+    )
+    result = cursor.fetchone()
+    saved_count = result[0]
+
+    return render_template(
+        "dashboard.html",
+        total_applications=total_applications,
+        applied_count=applied_count,
+        interviewing_count=interviewing_count,
+        rejected_count=rejected_count,
+        offers_count=offers_count,
+        saved_count=saved_count
+    )
 
 # Run Flask server
 if __name__ == "__main__":
