@@ -1,99 +1,99 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Edit Application</title>
-    </head>
+{% extends "base.html" %}
+{% block title %}
+    Edit Application
+{% endblock %}
 
-    <body>
-        <h1>Edit Application</h1>
+{% block content %}
 
-        {% if error %}
-            <p>{{ error }}</p>
-        {% endif %}
+    <h1>Edit Application</h1>
 
-        <form action="/edit-application/{{ application[0] }}" method="POST">
-            <label for="company">Company:</label>
-            <input
-                type="text"
-                id="company"
-                name="company"
-                value="{{ application[1] }}"
-                required
-            >
-            
-            <br><br>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
 
-            <label for="job_title">Job Title:</label>
-            <input
-                type="text"
-                id="job_title"
-                name="job_title"
-                value="{{ application[2] }}"
-                required
-            >
+    <form action="/edit-application/{{ application[0] }}" method="POST">
+        <label for="company">Company:</label>
+        <input
+            type="text"
+            id="company"
+            name="company"
+            value="{{ application[1] }}"
+            required
+        >
+        
+        <br><br>
 
-            <br><br>
+        <label for="job_title">Job Title:</label>
+        <input
+            type="text"
+            id="job_title"
+            name="job_title"
+            value="{{ application[2] }}"
+            required
+        >
 
-            <label for="location">Location:</label>
-            <input
-                type="text"
-                id="location"
-                name="location"
-                value="{{ application[3] }}"
-            >
+        <br><br>
 
-            <br><br>
-            
-            <label for="job_link">Job Link:</label>
-            <input
-                type="text"
-                id="job_link"
-                name="job_link"
-                value="{{ application[4] }}"
-            >
+        <label for="location">Location:</label>
+        <input
+            type="text"
+            id="location"
+            name="location"
+            value="{{ application[3] }}"
+        >
 
-            <br><br>
+        <br><br>
+        
+        <label for="job_link">Job Link:</label>
+        <input
+            type="text"
+            id="job_link"
+            name="job_link"
+            value="{{ application[4] }}"
+        >
 
-            <label for="date_applied">Date Applied:</label>
-            <input
-                type="date"
-                id="date_applied"
-                name="date_applied"
-                value="{{ application[5] }}"
-                required
-            >
+        <br><br>
 
-            <br><br>
-            
-            <label for="status">Status</label>
-            <select name="status">
-                <option value="">All Statuses</option>
-                <option value="Applied" {% if application[6] == "Applied" %}selected{% endif %}>Applied</option>
-                <option value="Interviewing" {% if application[6] == "Interviewing" %}selected{% endif %}>Interviewing</option>
-                <option value="Rejected" {% if application[6] == "Rejected" %}selected{% endif %}>Rejected</option>
-                <option value="Offer" {% if application[6] == "Offer" %}selected{% endif %}>Offer</option>
-                <option value="Saved" {% if application[6] == "Saved" %}selected{% endif %}>Saved</option>
-            </select>
+        <label for="date_applied">Date Applied:</label>
+        <input
+            type="date"
+            id="date_applied"
+            name="date_applied"
+            value="{{ application[5] }}"
+            required
+        >
 
-            <br><br>
+        <br><br>
+        
+        <label for="status">Status</label>
+        <select name="status">
+            <option value="">All Statuses</option>
+            <option value="Applied" {% if application[6] == "Applied" %}selected{% endif %}>Applied</option>
+            <option value="Interviewing" {% if application[6] == "Interviewing" %}selected{% endif %}>Interviewing</option>
+            <option value="Rejected" {% if application[6] == "Rejected" %}selected{% endif %}>Rejected</option>
+            <option value="Offer" {% if application[6] == "Offer" %}selected{% endif %}>Offer</option>
+            <option value="Saved" {% if application[6] == "Saved" %}selected{% endif %}>Saved</option>
+        </select>
 
-            <label for="follow_up_date">Follow-up Date</label>
-            <input
-                type="date"
-                id="follow_up_date"
-                name="follow_up_date"
-                value="{{ application[7] }}"
-            >
+        <br><br>
 
-            <br><br>
+        <label for="follow_up_date">Follow-up Date</label>
+        <input
+            type="date"
+            id="follow_up_date"
+            name="follow_up_date"
+            value="{{ application[7] }}"
+        >
 
-            <label for="notes">Notes:</label>
-            <textarea id="notes" name="notes">{{ application[8] }}</textarea>
-            
-            <br><br>
+        <br><br>
 
-            <button type="submit">Edit Application</button>
-            <a href="/view-applications">Cancel</a>
-        </form>
-    </body>
-</html>
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes">{{ application[8] }}</textarea>
+        
+        <br><br>
+
+        <button type="submit">Edit Application</button>
+        <a href="/view-applications">Cancel</a>
+    </form>
+
+{% endblock %}
