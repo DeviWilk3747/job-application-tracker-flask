@@ -15,59 +15,54 @@
         {% endwith %}
 
         <form action="/view-applications" method="GET">
-            <input type="text" name="search" value="{{ search }}">
+            <div class="form-group">
+                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title">
 
-            <br>
+                <select name="status">
+                    <option value="">All Statuses</option>
+                    <option value="Applied" {% if status == "Applied" %}selected{% endif %}>Applied</option>
+                    <option value="Interviewing" {% if status == "Interviewing" %}selected{% endif %}>Interviewing</option>
+                    <option value="Rejected" {% if status == "Rejected" %}selected{% endif %}>Rejected</option>
+                    <option value="Offer" {% if status == "Offer" %}selected{% endif %}>Offer</option>
+                    <option value="Saved" {% if status == "Saved" %}selected{% endif %}>Saved</option>
+                </select>
+            </div>
 
-            <select name="status">
-                <option value="">All Statuses</option>
-                <option value="Applied" {% if status == "Applied" %}selected{% endif %}>Applied</option>
-                <option value="Interviewing" {% if status == "Interviewing" %}selected{% endif %}>Interviewing</option>
-                <option value="Rejected" {% if status == "Rejected" %}selected{% endif %}>Rejected</option>
-                <option value="Offer" {% if status == "Offer" %}selected{% endif %}>Offer</option>
-                <option value="Saved" {% if status == "Saved" %}selected{% endif %}>Saved</option>
-            </select>
-
-            <br>
-
-            <button type="submit">Apply</button>
-
-            <br>
+            <button type="submit" class="primary-button">Apply</button>
             
             <a href="/view-applications">Clear Filters</a>
             
         </form>
+
         {% if applications %}
             {% for application in applications %}
-                <p><strong>Company: </strong>{{ application[1] }}</p>
-                <p><strong>Job Title: </strong>{{ application[2] }}</p>
-                <p><strong>Location: </strong>{{ application[3] }}</p>
+                <div class="application-card">
+                    <p><strong>Company: </strong>{{ application[1] }}</p>
+                    <p><strong>Job Title: </strong>{{ application[2] }}</p>
+                    <p><strong>Location: </strong>{{ application[3] }}</p>
 
-                <p>
-                    <strong>Job Link: </strong>
-                    <a href="{{ application[4] }}" target="_blank"></a>
-                </p>
+                    <p>
+                        <strong>Job Link: </strong>
+                        <a href="{{ application[4] }}" target="_blank" rel="noopener noreferrer">View Job Posting</a>
+                    </p>
 
-                <p><strong>Date Applied: </strong>{{ application[5] }}</p>
-                <p><strong>Status: </strong>{{ application[6] }}</p>
-                <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
-                <p><strong>Notes: </strong>{{ application[8] }}</p>
-
-                <br>
-
-                <a href="/edit-application/{{ application[0] }}">Edit</a>
+                    <p><strong>Date Applied: </strong>{{ application[5] }}</p>
+                    <p><strong>Status: </strong>{{ application[6] }}</p>
+                    <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
+                    <p><strong>Notes: </strong>{{ application[8] }}</p>
                 
-                <br> 
+
+                    <a href="/edit-application/{{ application[0] }}">Edit</a>
                 
                 <form 
+
                     action="/delete-application/{{ application[0] }}" 
                     method="POST"
                     onsubmit="return confirm('Are you sure you want to delete this application?');"
                 >
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="primary-button">Delete</button>
                 </form>
-
-                <br>
+            </div>
 
             {% endfor %}
 
@@ -75,9 +70,5 @@
         {% else %}
             <p>No applications found</p>
         {% endif %}
-
-        <br>
-
-        <a href="/">Home</a>
 
 {% endblock %}

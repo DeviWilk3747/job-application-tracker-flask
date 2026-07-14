@@ -4,21 +4,44 @@
 {% endblock %}
 
 {% block content %}
+
     <h1>Dashboard</h1>
 
-    <h2>Total Applications: {{ total_applications }} </h2>
+    <p class="page-description">
+        Track your job search progress at a glance.
+    </p>
+    
+    <h2>Application Stats</h2>
+        <div class="stats-grid">
+            <div class="stat-card total-card">
+                <h3>Total Applications</h3>
+                <p>{{ total_applications }}</p>
+            </div>
 
-    <h2>Applications by Status:</h2>
+            <div class="stat-card">
+                <h3>Applied</h3>
+                <p>{{ applied_count }}</p>
+            </div>
 
-        <p>Applied - {{ applied_count }}</p>
-        <p>Interviewing - {{ interviewing_count }}</p>
-        <p>Rejected - {{ rejected_count }}</p>
-        <p>Offers - {{ offers_count }}</p>
-        <p>Saved - {{ saved_count }}</p>
+            <div class="stat-card">
+                <h3>Interviewing</h3>
+                <p>{{ interviewing_count }}</p>
+            </div>
 
-    <br><br>
-
-    <a href="/">Back to Home</a>
-    <a href="/view-applications">View Applications</a>
+            <div class="stat-card">
+                <h3>Rejected</h3>
+                <p>{{ rejected_count }}</p>
+            </div>
+                
+            <div class="stat-card">
+                <h3>Offered</h3>
+                <p>{{ offers_count }}</p>
+            </div>
+                
+            <div class="stat-card">
+                <h3>Saved</h3>
+                <p>{{ saved_count }}</p>
+            </div>
+        </div>
 
 {% endblock %}

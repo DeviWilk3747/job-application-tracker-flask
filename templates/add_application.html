@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
     <h1>Add Application</h1>
 
     {% if error %}
@@ -12,84 +13,84 @@
     {% endif %}
 
     <form action="/add-application" method="POST">
-        <label for="company">Company:</label>
-        <input
-            type="text"
-            id="company"
-            name="company"
-            required
-        >
+        <div class="form-group">
+            <label for="company">Company:</label>
+            <input
+                type="text"
+                id="company"
+                name="company"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="job_title">Job Title:</label>
+            <input
+                type="text"
+                id="job_title"
+                name="job_title"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input
+                type="text"
+                id="location"
+                name="location"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="job_link">Job Link:</label>
+            <input
+                type="text"
+                id="job_link"
+                name="job_link"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="date_applied">Date Applied:</label>
+            <input
+                type="date"
+                id="date_applied"
+                name="date_applied"
+                required
+            >
+        </div>   
         
-        <br><br>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="">Select a status</option>
+                <option value="Applied">Applied</option>
+                <option value="Interviewing">Interviewing</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Offer">Offer</option>
+                <option value="Saved">Saved</option>
+            </select>
+        </div>
 
-        <label for="job_title">Job Title:</label>
-        <input
-            type="text"
-            id="job_title"
-            name="job_title"
-            required
-        >
+        <div class="form-group">
+            <label for="follow_up_date">Follow-up Date</label>
+            <input
+                type="date"
+                id="follow_up_date"
+                name="follow_up_date"
+            >
+        </div>
 
-        <br><br>
+        <div class="form-group">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes"></textarea>
+        </div>
 
-        <label for="location">Location:</label>
-        <input
-            type="text"
-            id="location"
-            name="location"
-        >
-
-        <br><br>
-        
-        <label for="job_link">Job Link:</label>
-        <input
-            type="text"
-            id="job_link"
-            name="job_link"
-        >
-
-        <br><br>
-
-        <label for="date_applied">Date Applied:</label>
-        <input
-            type="date"
-            id="date_applied"
-            name="date_applied"
-            required
-        >
-
-        <br><br>
-        
-        <label for="status">Status</label>
-        <select name="status">
-            <option value="">Select a status</option>
-            <option value="Applied">Applied</option>
-            <option value="Interviewing">Interviewing</option>
-            <option value="Rejected">Rejected</option>
-            <option value="Offer">Offer</option>
-            <option value="Saved">Saved</option>
-        </select>
-
-        <br><br>
-
-        <label for="follow_up_date">Follow-up Date</label>
-        <input
-            type="date"
-            id="follow_up_date"
-            name="follow_up_date"
-        >
-
-        <br><br>
-
-        <label for="notes">Notes:</label>
-        <textarea id="notes" name="notes"></textarea>
-
-        <br><br>
-
-        <button type="submit">Add Application</button>
+    
+        <button type="submit" class="primary-button">Add Application</button>
     </form>
-
-    <br><br>
     
     <a href="/">Back to Home</a>
+    
 {% endblock %}
