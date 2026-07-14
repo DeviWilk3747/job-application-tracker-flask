@@ -209,7 +209,7 @@ def dashboard():
 
     cursor.execute(
         "SELECT COUNT(*) FROM applications WHERE status = ?",
-        ("Offers",)
+        ("Offer",)
     )
     result = cursor.fetchone()
     offers_count = result[0]

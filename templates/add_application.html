@@ -9,7 +9,7 @@
     <h1>Add Application</h1>
 
     {% if error %}
-        <p>{{ error }}</p>
+        <p class="error-message">{{ error }}</p>
     {% endif %}
 
     <form action="/add-application" method="POST">
