@@ -170,6 +170,10 @@ body{
     color: white;
 }
 
+.links {
+    color: #dc2626;
+    text-decoration: underline;
+}
 .edit-link:hover {
     background-color: #f3caca;
 }
@@ -203,4 +207,53 @@ body{
     background-color: #fff5f5;
     border: 1px solid #f3caca;
     color: #7f1d1d;
+}
+
+.hero {
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    max-width: 650px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.home-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.home-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #dc2626;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #b91c1c;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.feature-card {
+    background-color: #fff5f5;
+    border: 1px solid #f3caca;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(127, 29, 29, 0.15);
 }

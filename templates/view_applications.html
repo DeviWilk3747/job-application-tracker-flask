@@ -16,7 +16,7 @@
 
         <form action="/view-applications" method="GET">
             <div class="form-group">
-                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title">
+                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title" class="links">
 
                 <select name="status">
                     <option value="">All Statuses</option>
@@ -30,7 +30,7 @@
 
             <button type="submit" class="primary-button">Apply</button>
             
-            <a href="/view-applications">Clear Filters</a>
+            <a href="/view-applications" class="links">Clear Filters</a>
             
         </form>
 

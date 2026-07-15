@@ -4,10 +4,39 @@
 {% endblock %}
 
 {% block content %}
+    <section class="hero">
+        <h1>Job Application Tracker</h1>
 
-    <h1>Job Application Tracker</h1>
+        <p>Stay organized during your job search. Track applications, statuses, 
+            follow-ups and notes in one place.
+        </p>
 
-    <p>Track job applications, statuses, follow-ups, and interview notes.</p>
+        <div class="home-actions">
+            <a href="/add-application" class="home-button">Add Application</a>
+            <a href="/view-applications" class="home-button">View Applications</a>
+            <a href="/dashboard" class="home-button">Dashboard</a>
+        </div>
+    </section>
 
+    <section class="features">
+        <h2>Features</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Track Applications</h3>
+                <p>Organize applications by Applied, Interviewing, Rejected, Offer, or Saved</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Follow Up</h3>
+                <p>Keep track of follow-up dates so applications do not get forgotten</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Dashboard Insights</h3>
+                <p>View application totals and status counts to track your job search progress.</p>
+            </div>
+        </div>
+    </section>
 
 {% endblock %} 
