@@ -16,7 +16,7 @@
 
         <form action="/view-applications" method="GET">
             <div class="form-group">
-                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title" class="links">
+                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title">
 
                 <select name="status">
                     <option value="">All Statuses</option>
@@ -47,7 +47,17 @@
                     </p>
 
                     <p><strong>Date Applied: </strong>{{ application[5] }}</p>
-                    <p><strong>Status: </strong>{{ application[6] }}</p>
+                    <p>
+                        <strong>Status: </strong>
+                        <span class="status-badge
+                            {% if application[6] == 'Applied' %}status-applied{% endif %}
+                            {% if application[6] == 'Interviewing' %}status-interviewing{% endif %}
+                            {% if application[6] == 'Rejected' %}status-rejected{% endif %}
+                            {% if application[6] == 'Offer' %}status-offer{% endif %}
+                            {% if application[6] == 'Saved' %}status-saved{% endif %}">
+                        {{ application[6] }}
+                        </span>
+                    </p>
                     <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
                     <p><strong>Notes: </strong>{{ application[8] }}</p>
                 
