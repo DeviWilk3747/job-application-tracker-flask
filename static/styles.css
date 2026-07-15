@@ -263,8 +263,6 @@ body{
     padding: 5px 10px;
     border-radius: 999px;
     font-weight: 600;
-    background-color: #fee2e2;
-    color: #991b1b;
 }
 
 .status-applied {
@@ -290,4 +288,32 @@ body{
 .status-saved {
     background-color: #e0e7ff;
     color: #3730a3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .site-nav {
+        flex-wrap: wrap;
+        margin: 15px;
+    }
+
+    .home-actions {
+        flex-direction: column;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-button {
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
 }
