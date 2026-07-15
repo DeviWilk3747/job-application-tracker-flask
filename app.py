@@ -1,5 +1,7 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
+from datetime import date
 
 connection = sqlite3.connect("application_tracker.db", check_same_thread=False)
 cursor = connection.cursor()
@@ -27,7 +29,10 @@ create_table()
 # Create Flask application
 app = Flask(__name__)
 
-app.secret_key = "development-secret-key"
+app.config["SECRET_KEY"] = os.environ.get(
+    "SECRET_KEY",
+    "development-secret-key"
+)
 
 # Home page route
 @app.route("/")
@@ -100,7 +105,29 @@ def view_applications():
 
     applications = cursor.fetchall()
 
-    return render_template("view_applications.html", applications=applications, search=search, status=status)
+    today = date.today()
+
+    applications_with_followups = []
+
+    for application in applications:
+        follow_up_date = application[7]
+
+        if not follow_up_date:
+            follow_up_status = "No follow-up date"
+        else:
+            follow_up = date.fromisoformat(follow_up_date)
+
+            if follow_up < today:
+                follow_up_status = "Overdue"
+            elif follow_up == today:
+                follow_up_status = "Due today"
+            else:
+                follow_up_status = "Upcoming"
+        
+        applications_with_followups.append((application, follow_up_status))
+
+
+    return render_template("view_applications.html", applications=applications_with_followups, search=search, status=status)
 
 @app.route("/delete-application/<int:application_id>", methods=["POST"])
 def delete_application(application_id):

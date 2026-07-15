@@ -35,7 +35,7 @@
         </form>
 
         {% if applications %}
-            {% for application in applications %}
+            {% for application, follow_up_status in applications %}
                 <div class="application-card">
                     <p><strong>Company: </strong>{{ application[1] }}</p>
                     <p><strong>Job Title: </strong>{{ application[2] }}</p>
@@ -58,7 +58,7 @@
                         {{ application[6] }}
                         </span>
                     </p>
-                    <p><strong>Follow-up Date: </strong>{{ application[7] }}</p>
+                    <p><strong>Follow-up Status: </strong>{{ follow_up_status }}</p>
                     <p><strong>Notes: </strong>{{ application[8] }}</p>
                 
                     <div class="card-actions">
