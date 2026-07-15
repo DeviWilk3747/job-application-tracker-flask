@@ -31,7 +31,17 @@ I built this project to practice full CRUD functionality, database integration, 
 - Git and GitHub
 
 ## Screenshots
-Screemshots will be added after final UI polish.
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Add Application
+![Add Application](screenshots/add-application.png)
+
+### View Applications
+![View Applications](screenshots/view-applications.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
 ## Installation
 Clone the repository:
@@ -101,3 +111,6 @@ http://127.0.0.1:5000
 - Add status badges
 - Add due-date reminders for follow-ups
 - Improve mobile responsiveness
+
+## Completed Improvements
+- Deployed the app publicly with Render
