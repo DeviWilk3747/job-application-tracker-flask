@@ -111,6 +111,10 @@ http://127.0.0.1:5000
 - Add status badges
 - Add due-date reminders for follow-ups
 - Improve mobile responsiveness
+- Add due date reminders for follow-ups
 
 ## Completed Improvements
 - Deployed the app publicly with Render
+- Added status badges
+- Improved mobile responsivness
+- Added follow-up status labels for overdue, due today, upcoming, and missing follow-up dates
