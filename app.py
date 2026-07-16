@@ -248,6 +248,21 @@ def dashboard():
     result = cursor.fetchone()
     saved_count = result[0]
 
+    status_data = [
+        {"name": "Applied", "count": applied_count}
+        {"name": "Interviewing", "count": interviewing_count}
+        {"name": "Rejected", "count": rejected_count}
+        {"name": "Offered", "count": offers_count}
+        {"name": "Saved", "count": saved_count}
+    ]
+
+    max_count = max(applied_count, interviewing_count, rejected_count, offers_count, saved_count)
+
+    for status in status_data:
+        if max_count > 0:
+            status["percentage"] = status["count"] / max_count * 100
+        else:
+            status["percentage"] = 0
     return render_template(
         "dashboard.html",
         total_applications=total_applications,
@@ -256,6 +271,7 @@ def dashboard():
         rejected_count=rejected_count,
         offers_count=offers_count,
         saved_count=saved_count
+        status_data=status_data
     )
 
 # Run Flask server
