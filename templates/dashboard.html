@@ -12,36 +12,49 @@
     </p>
     
     <h2>Application Stats</h2>
-        <div class="stats-grid">
-            <div class="stat-card total-card">
-                <h3>Total Applications</h3>
-                <p>{{ total_applications }}</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>Applied</h3>
-                <p>{{ applied_count }}</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>Interviewing</h3>
-                <p>{{ interviewing_count }}</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>Rejected</h3>
-                <p>{{ rejected_count }}</p>
-            </div>
-                
-            <div class="stat-card">
-                <h3>Offered</h3>
-                <p>{{ offers_count }}</p>
-            </div>
-                
-            <div class="stat-card">
-                <h3>Saved</h3>
-                <p>{{ saved_count }}</p>
-            </div>
+    <div class="stats-grid">
+        <div class="stat-card total-card">
+            <h3>Total Applications</h3>
+            <p>{{ total_applications }}</p>
         </div>
+
+        <div class="stat-card">
+            <h3>Applied</h3>
+            <p>{{ applied_count }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Interviewing</h3>
+            <p>{{ interviewing_count }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Rejected</h3>
+            <p>{{ rejected_count }}</p>
+        </div>
+            
+        <div class="stat-card">
+            <h3>Offered</h3>
+            <p>{{ offers_count }}</p>
+        </div>
+            
+        <div class="stat-card">
+            <h3>Saved</h3>
+            <p>{{ saved_count }}</p>
+        </div>
+    </div>
+    
+    <h2>Status Breakdown</h2>
+    <div class="chart-section">
+        {% for status in status_data %}
+            <div class="chart-row">
+               <span class="chart-label">{{ status.name }}</span>
+                <div class="chart-bar">
+                    <div class="chart-fill" style="width: {{ status.percentage }}%;"></div>
+                </div>
+                <span class="chart-count">{{ status.count }} ({{ status.percentage }}%)</span>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

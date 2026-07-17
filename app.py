@@ -249,10 +249,10 @@ def dashboard():
     saved_count = result[0]
 
     status_data = [
-        {"name": "Applied", "count": applied_count}
-        {"name": "Interviewing", "count": interviewing_count}
-        {"name": "Rejected", "count": rejected_count}
-        {"name": "Offered", "count": offers_count}
+        {"name": "Applied", "count": applied_count},
+        {"name": "Interviewing", "count": interviewing_count},
+        {"name": "Rejected", "count": rejected_count},
+        {"name": "Offered", "count": offers_count},
         {"name": "Saved", "count": saved_count}
     ]
 
@@ -260,9 +260,10 @@ def dashboard():
 
     for status in status_data:
         if max_count > 0:
-            status["percentage"] = status["count"] / max_count * 100
+            status["percentage"] = round(status["count"] / total_applications * 100, 1)
         else:
             status["percentage"] = 0
+
     return render_template(
         "dashboard.html",
         total_applications=total_applications,
@@ -270,7 +271,7 @@ def dashboard():
         interviewing_count=interviewing_count,
         rejected_count=rejected_count,
         offers_count=offers_count,
-        saved_count=saved_count
+        saved_count=saved_count,
         status_data=status_data
     )
 

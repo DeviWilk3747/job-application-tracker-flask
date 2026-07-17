@@ -250,7 +250,8 @@ body{
     margin-top: 20px;
 }
 
-.feature-card {
+.feature-card,
+.chart-section {
     background-color: #fff5f5;
     border: 1px solid #f3caca;
     padding: 18px;
@@ -288,6 +289,39 @@ body{
 .status-saved {
     background-color: #e0e7ff;
     color: #3730a3;
+}
+
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chart-label {
+    width: 120px;
+    font-weight: 600;
+    color: #991b1b;
+}
+
+.chart-bar {
+    flex: 1;
+    height: 14px;
+    background-color: #fee2e2;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.chart-fill {
+    height: 100%;
+    background-color: #dc2626;
+    border-radius: 999px;
+}
+
+.chart-count {
+    width: 80px;
+    font-weight: 700;
+    text-align: right;
 }
 
 @media (max-width: 768px) {
