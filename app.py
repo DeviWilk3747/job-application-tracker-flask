@@ -82,6 +82,7 @@ def view_applications():
 
     search = request.args.get("search", "").strip()
     status = request.args.get("status", "").strip()
+    sort = request.args.get("sort", "").strip()
 
     query = ("SELECT * FROM applications")
     conditions = []
@@ -100,6 +101,19 @@ def view_applications():
 
     if conditions:
         query += " WHERE " + " AND ".join(conditions)
+    
+    if sort == "date_applied_asc":
+        query += " ORDER BY date_applied ASC"
+    
+    elif sort == "date_applied_desc":
+        query += " ORDER BY date_applied DESC"
+
+    elif sort == "follow_up_asc":
+        query += " ORDER BY follow_up_date ASC"
+    
+    elif sort == "follow_up_desc":
+        query += " ORDER BY follow_up_date DESC"
+
 
     cursor.execute(query, parameters)
 
@@ -127,7 +141,7 @@ def view_applications():
         applications_with_followups.append((application, follow_up_status))
 
 
-    return render_template("view_applications.html", applications=applications_with_followups, search=search, status=status)
+    return render_template("view_applications.html", applications=applications_with_followups, search=search, status=status, sort=sort)
 
 @app.route("/delete-application/<int:application_id>", methods=["POST"])
 def delete_application(application_id):

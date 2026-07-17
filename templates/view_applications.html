@@ -26,6 +26,26 @@
                     <option value="Offer" {% if status == "Offer" %}selected{% endif %}>Offer</option>
                     <option value="Saved" {% if status == "Saved" %}selected{% endif %}>Saved</option>
                 </select>
+
+                <select name="sort">
+                    <option value="">Sort by date</option>
+                    <option value="date_applied_asc"
+                        {% if sort == "date_applied_asc" %}selected{% endif %}>
+                        Date Applied: Oldest to Newest
+                    </option>
+                    <option value="date_applied_desc"
+                        {% if sort == "date_applied_desc" %}selected{% endif %}>
+                        Date Applied: Newest to Oldest
+                    </option>
+                    <option value="follow_up_asc"
+                        {% if sort == "follow_up_asc" %}selected{% endif %}>
+                        Follow-up: Soonest First
+                    </option>
+                    <option value="follow_up_desc"
+                        {% if sort == "follow_up_desc" %}selected{% endif %}>
+                        Follow-up: Latest First
+                    </option>
+                </select>
             </div>
 
             <button type="submit" class="primary-button">Apply</button>
