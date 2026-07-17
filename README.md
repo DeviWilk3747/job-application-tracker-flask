@@ -119,3 +119,4 @@ http://127.0.0.1:5000
 - Improved mobile responsivness
 - Added follow-up status labels for overdue, due today, upcoming, and missing follow-up dates
 - Added dashboard status breakdown chart showing application counts and percentages 
+- Added sorting by date applied and follow-up date
