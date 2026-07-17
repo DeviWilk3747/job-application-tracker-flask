@@ -109,11 +109,10 @@ def view_applications():
         query += " ORDER BY date_applied DESC"
 
     elif sort == "follow_up_asc":
-        query += " ORDER BY follow_up_date ASC"
+        query += " ORDER BY CASE WHEN follow_up_date = '' THEN 1 ELSE 0 END, follow_up_date ASC"
     
     elif sort == "follow_up_desc":
-        query += " ORDER BY follow_up_date DESC"
-
+        query += " ORDER BY CASE WHEN follow_up_date = '' THEN 1 ELSE 0 END, follow_up_date DESC"
 
     cursor.execute(query, parameters)
 
