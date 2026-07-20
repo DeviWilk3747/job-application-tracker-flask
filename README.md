@@ -18,8 +18,13 @@ I built this project to practice full CRUD functionality, database integration, 
 - Delete applications
 - Search by company or job title
 - Filter applications by status
-- View dashboard statistics
+- Sort applications by date applied and follow-up date
 - Track follow-up dates and notes
+- Display follow-up status labels for overdue, due today, upcoming, and missing follow-up dates
+- Display status and follow-up badges
+- View dashboard statistics
+- View dashboard status breakdown chart with counts and percentages
+- Responsive layout for smaller screens
 
 ## Tech Stack
 - Python
@@ -104,19 +109,16 @@ http://127.0.0.1:5000
 - How to style a web app with CSS
 
 ## Future Improvements
-- Add user authentication
-- Deploy the app online
-- Add PostgreSQL for production
-- Add charts to the dashboard
-- Add status badges
-- Add due-date reminders for follow-ups
-- Improve mobile responsiveness
-- Add due date reminders for follow-ups
+- Add PostgreSQL for production database persistence
+- Add user authentication so multiple users can manage their own applications
+- Add email or notification reminders for follow-up dates
+- Add pagination for larger application lists
+- Add application analytics by month and status
 
 ## Completed Improvements
 - Deployed the app publicly with Render
 - Added status badges
-- Improved mobile responsivness
+- Improved mobile responsiveness
 - Added follow-up status labels for overdue, due today, upcoming, and missing follow-up dates
 - Added dashboard status breakdown chart showing application counts and percentages 
 - Added sorting by date applied and follow-up date
