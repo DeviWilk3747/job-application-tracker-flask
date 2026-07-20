@@ -78,7 +78,16 @@
                         {{ application[6] }}
                         </span>
                     </p>
-                    <p><strong>Follow-up Status: </strong>{{ follow_up_status }}</p>
+                    <p>
+                        <strong>Follow-up Status: </strong>
+                        <span class="followup-badge 
+                            {% if follow_up_status == 'Overdue' %}followup-overdue{% endif %}
+                            {% if follow_up_status == 'Due today' %}followup-due-today{% endif %}
+                            {% if follow_up_status == 'Upcoming' %}followup-upcoming{% endif %}
+                            {% if follow_up_status == 'No follow-up date' %}followup-none{% endif %}">
+                        {{ follow_up_status }}
+                        </span>
+                    </p>
                     <p><strong>Notes: </strong>{{ application[8] }}</p>
                 
                     <div class="card-actions">
