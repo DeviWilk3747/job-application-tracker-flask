@@ -14,45 +14,58 @@
             {% endif %}
         {% endwith %}
 
-        <form action="/view-applications" method="GET">
-            <div class="form-group">
-                <input type="text" name="search" value="{{ search }}" placeholder="Search by company or job title">
+        <section class="filter-panel">
+            <h2>Find Applications</h2>
 
-                <select name="status">
-                    <option value="">All Statuses</option>
-                    <option value="Applied" {% if status == "Applied" %}selected{% endif %}>Applied</option>
-                    <option value="Interviewing" {% if status == "Interviewing" %}selected{% endif %}>Interviewing</option>
-                    <option value="Rejected" {% if status == "Rejected" %}selected{% endif %}>Rejected</option>
-                    <option value="Offer" {% if status == "Offer" %}selected{% endif %}>Offer</option>
-                    <option value="Saved" {% if status == "Saved" %}selected{% endif %}>Saved</option>
-                </select>
+            <form action="/view-applications" method="GET" class="filter-form">
+                <div class="filter-grid">
+                    <div class="form-group">
+                        <label for="search">Search</label>
+                        <input id="search" type="text" name="search" value="{{ search }}" placeholder="Search by company or job title">
+                    </div>
 
-                <select name="sort">
-                    <option value="">Sort by date</option>
-                    <option value="date_applied_asc"
-                        {% if sort == "date_applied_asc" %}selected{% endif %}>
-                        Date Applied: Oldest to Newest
-                    </option>
-                    <option value="date_applied_desc"
-                        {% if sort == "date_applied_desc" %}selected{% endif %}>
-                        Date Applied: Newest to Oldest
-                    </option>
-                    <option value="follow_up_asc"
-                        {% if sort == "follow_up_asc" %}selected{% endif %}>
-                        Follow-up: Soonest First
-                    </option>
-                    <option value="follow_up_desc"
-                        {% if sort == "follow_up_desc" %}selected{% endif %}>
-                        Follow-up: Latest First
-                    </option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="">All Statuses</option>
+                            <option value="Applied" {% if status == "Applied" %}selected{% endif %}>Applied</option>
+                            <option value="Interviewing" {% if status == "Interviewing" %}selected{% endif %}>Interviewing</option>
+                            <option value="Rejected" {% if status == "Rejected" %}selected{% endif %}>Rejected</option>
+                            <option value="Offer" {% if status == "Offer" %}selected{% endif %}>Offer</option>
+                            <option value="Saved" {% if status == "Saved" %}selected{% endif %}>Saved</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sort">Sort</label>
+                        <select id="sort" name="sort">
+                            <option value="">Sort by date</option>
+                            <option value="date_applied_asc"
+                                {% if sort == "date_applied_asc" %}selected{% endif %}>
+                                Date Applied: Oldest to Newest
+                            </option>
+                            <option value="date_applied_desc"
+                                {% if sort == "date_applied_desc" %}selected{% endif %}>
+                                Date Applied: Newest to Oldest
+                            </option>
+                            <option value="follow_up_asc"
+                                {% if sort == "follow_up_asc" %}selected{% endif %}>
+                                Follow-up: Soonest First
+                            </option>
+                            <option value="follow_up_desc"
+                                {% if sort == "follow_up_desc" %}selected{% endif %}>
+                                Follow-up: Latest First
+                            </option>
+                        </select>
+                    </div>
+                </div>
 
-            <button type="submit" class="primary-button">Apply</button>
-            
-            <a href="/view-applications" class="links">Clear Filters</a>
-            
-        </form>
+                <div class="filter-actions">
+                    <button type="submit" class="primary-button">Apply</button>
+                    <a href="/view-applications" class="secondary-link">Clear Filters</a>
+                </div>
+            </form>
+        </section>
 
         {% if applications %}
             {% for application, follow_up_status in applications %}
