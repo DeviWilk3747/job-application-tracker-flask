@@ -121,3 +121,4 @@ http://127.0.0.1:5000
 - Added dashboard status breakdown chart showing application counts and percentages 
 - Added sorting by date applied and follow-up date
 - Added follow-up status badges for overdue, due today, upcoming, and missing follow-up dates
+- Improved the search, filter, and sorting controls with a cleaner responsive layout
